@@ -26,6 +26,10 @@ try:
     # optional - true/false, default: false
     volume_reset = data.get('volume_reset') or True
 
+    # specify the tts engine to use
+    # optional - default: home_assistant_cloud
+    tts_engine = data.get('tts_engine') or 'home_assistant_cloud'
+
     # store the volume level of all media_players before running the script if
     # specified
     if volume_reset and volume is not None:
@@ -43,7 +47,7 @@ try:
         })
 
     # send message through tts.cloud_say
-    hass.services.call('tts', 'cloud_say', {
+    hass.services.call('tts', tts_engine, {
         'entity_id': media_players,
         'message': message,
         'cache': cache,

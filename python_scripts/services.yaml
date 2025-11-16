@@ -2,6 +2,12 @@ sync_announcement:
   name: Sync Announcement
   description: Sync text-to-speech (TTS) messages across multiple media player entities
   fields:
+    tts_engine:
+      name: TTS Engine
+      description: The TTS engine to use for generating the speech. The bit after "tts." in the service name
+      selector:
+        text:
+          default: home_assistant_cloud
     media_players:
       name: Media Players
       description: The media player entities to sync TTS messages to
